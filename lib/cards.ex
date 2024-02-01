@@ -16,6 +16,11 @@ defmodule Cards do
     "Hi there!"
   end
 
+  def save(deck, filename) do
+    binary = :erlang.term_to_binary(deck)
+    File.write(filename, binary)
+  end
+
   def deal(deck, hand) do
     # Return a tuple of cards
     # The first is our hand, the second is remaining cards of the deck
