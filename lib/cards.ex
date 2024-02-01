@@ -16,6 +16,11 @@ defmodule Cards do
     "Hi there!"
   end
 
+  def load(filename) do
+    {_status, binary} = File.read(filename)
+    :erlang.binary_to_term(binary)
+  end
+
   def save(deck, filename) do
     binary = :erlang.term_to_binary(deck)
     File.write(filename, binary)
