@@ -16,27 +16,30 @@ defmodule Cards do
     "Hi there!"
   end
 
+  def deal(deck, hand) do
+    # Return a tuple of cards
+    # The first is our hand, the second is remaining cards of the deck
+    Enum.split(deck, hand)
+  end
+
   def create_deck do
     values = ["Ace", "Two", "Three", "Four", "Five"]
     suits = ["Spades", "Clubs", "Hearts", "Diamonds"]
     # Comprehension <-
-    cards = for suit <- suits do
-      for value <- values do
-        "#{value} of #{suit}"
-      end
+    # Nested arrays
+    for suit <- suits, value <- values do
+      "#{value} of #{suit}"
     end
-    ## Aplana las listas en una sola
-    List.flatten(cards)
   end
 
   def shuffle(deck) do
-    # podemos llamar Enum sin importar la libreria
+    # we can call the Enum without make import in this file
     Enum.shuffle(deck)
   end
 
-  # Por convencion podemos usar el signo de interrogacion,
-  # no confiere un comportamiento especial, es solo para
-  # indicar a otros desarrolladores que vamos a retornar true o false
+  # By convention we can use the question mark,
+  # does not confer special behavior, it is only for
+  # tell other developers that we are going to return true or false
   def contains?(deck, card) do
     Enum.member?(deck, card)
   end
