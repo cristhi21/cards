@@ -1,24 +1,13 @@
 defmodule Cards do
   @moduledoc """
-  Documentation for module Cards.
+    Documentation for module Cards.
   """
 
   @doc """
-  Hello world.
+    Create hand, give 'hand_size', like this:
 
   ## Examples
-
-      iex> Cards.hello()
-      :world
-
-  """
-  def hello do
-    "Hi there!"
-  end
-
-  @doc """
-  Create hand, give 'hand_size', like this:
-
+  
       iex(1)> Cards.create_hand(5)
   """
   def create_hand(hand_size) do
@@ -33,7 +22,7 @@ defmodule Cards do
   end
 
   @doc """
-  read a file with my deck
+    read a file with my deck
   """
   def load(filename) do
     {status, binary} = File.read(filename)
@@ -45,7 +34,7 @@ defmodule Cards do
   end
 
   @doc """
-  save a file with my deck
+    save a file with my deck
   """
   def save(deck, filename) do
     binary = :erlang.term_to_binary(deck)
@@ -53,7 +42,15 @@ defmodule Cards do
   end
 
   @doc """
-  Return a tuple of cards
+    Divides a deck into a hand and the remainder of the deck.
+    `hand` argument indicates how many cards should be in the hand
+
+  ## Examples
+
+      iex(1)> deck = Cards.create_deck
+      iex(2)> {hand, deck} = Cards.deal(deck, 1)
+      iex(3)> hand
+      ["Ace of Spades"]
   """
   def deal(deck, hand) do
     # Return a tuple of cards
@@ -62,7 +59,7 @@ defmodule Cards do
   end
 
   @doc """
-  create a whole deck mixing values and suits
+    create a whole deck mixing values and suits
   """
   def create_deck do
     values = ["Ace", "Two", "Three", "Four", "Five"]
@@ -75,7 +72,7 @@ defmodule Cards do
   end
 
   @doc """
-  Shuffle my deck
+    Shuffle my deck
   """
   def shuffle(deck) do
     # we can call the Enum without make import in this file
@@ -83,7 +80,7 @@ defmodule Cards do
   end
 
   @doc """
-  Indicated to me if I have a card
+    Indicated to me if I have a card
   """
   # By convention we can use the question mark,
   # does not confer special behavior, it is only for
