@@ -7,8 +7,8 @@ defmodule Cards do
     Create hand, give 'hand_size', like this:
 
   ## Examples
-  
-      iex(1)> Cards.create_hand(5)
+
+      iex> Cards.create_hand(5)
   """
   def create_hand(hand_size) do
     #deck = Cards.create_deck()
@@ -48,7 +48,7 @@ defmodule Cards do
   ## Examples
 
       iex(1)> deck = Cards.create_deck
-      iex(2)> {hand, deck} = Cards.deal(deck, 1)
+      iex(2)> {hand, _deck} = Cards.deal(deck, 1)
       iex(3)> hand
       ["Ace of Spades"]
   """
@@ -80,12 +80,16 @@ defmodule Cards do
   end
 
   @doc """
-    Indicated to me if I have a card
+    Determines whether a deck contains a given card
+
+  ### Example
+      iex> deck = Cards.create_deck
+      iex> Cards.contains?(deck,"Ace of Spades")
+      true
   """
-  # By convention we can use the question mark,
-  # does not confer special behavior, it is only for
-  # tell other developers that we are going to return true or false
   def contains?(deck, card) do
+    # By convention we can use the question mark, does not confer special behavior, it is only for
+    # tell other developers that we are going to return true or false
     Enum.member?(deck, card)
   end
 end
